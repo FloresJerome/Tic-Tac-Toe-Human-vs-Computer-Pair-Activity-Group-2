@@ -81,6 +81,12 @@ const winChecker = () => {
     }
 };
 
+const playClickSound = () => {
+    const sound = document.getElementById('click-sound');
+    sound.currentTime = 0; // Reset the sound to the beginning
+    sound.play();
+}
+
 //Display X/O on click
 btnRef.forEach((element) => {
     element.addEventListener("click", () => {
@@ -102,6 +108,8 @@ btnRef.forEach((element) => {
         }
         //Check for win on every click
         winChecker();
+        // Play Click Sound
+        playClickSound();
     });
 });
 //Enable Buttons and disable popup on page load

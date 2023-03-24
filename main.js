@@ -108,5 +108,5 @@ btnRef.forEach((element) => {
 window.onload = enableButtons;
 
 window.addEventListener('click', () => {
-    document.getElementById('song').play();
+    document.getElementById('song').play()
 })

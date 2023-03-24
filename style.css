@@ -21,6 +21,22 @@ html {
     left: 50%;
 }
 
+.bg-video {
+    position: absolute;  
+    right: 0;
+    bottom: 0;   
+    z-index: -1;  
+}
+    
+    
+    
+@media (min-aspect-ratio: 16/9) {
+    .bg-video {
+    width: 100%;
+    height: auto;
+    }
+}
+
 #start-page {
     top: 30%;
     left: 50%;

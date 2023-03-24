@@ -19,9 +19,26 @@ html {
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+    display: none;
 }
 
-.container {
+#start-page {
+    top: 30%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, 50%);
+    display: none;
+    
+}
+
+#select-game {
+    top: 30%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, 50%);
+}
+
+#btn-container {
     width: 70vmin;
     height: 70vmin;
     display: flex;

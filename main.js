@@ -3,16 +3,6 @@ let popupRef = document.querySelector(".popup");
 let newgameBtn = document.getElementById("new-game");
 let restartBtn = document.getElementById("restart");
 let msgRef = document.getElementById("message");
-
-const startBtn = document.getElementById('start-page');
-startButton = startBtn.querySelector('.istart')
-
-window.onload = ()=>{
-    startButton.classList.add('hide');
-    
-}
-
-
 //Winning Pattern Array
 let winningPattern = [
     [0, 1, 2],

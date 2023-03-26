@@ -7,12 +7,13 @@
 
 body {
     height: 100vh;
-    background: linear-gradient(135deg, #8052ec, #d161ff);
+    background: linear-gradient(135deg, #525fec, #d161ff);
 }
 
 html {
     font-size: 16px;
 }
+
 
 .wrapper {
     position: absolute;
@@ -63,13 +64,13 @@ html {
 }
 
 .button-option {
-    background: #ffffff;
+    background: #ef4343;
     height: 22vmin;
     width: 22vmin;
     border: none;
     border-radius: 8px;
     font-size: 12vmin;
-    color: #d161ff;
+    color: #3d27e6;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -86,7 +87,7 @@ html {
 }
 
 .popup {
-    background: linear-gradient(135deg, #8052ec, #d161ff);
+    background-image: url(bg.jpg);
     height: 100%;
     width: 100%;
     position: absolute;
@@ -106,6 +107,7 @@ html {
     color: #ffffff;
     border-radius: 0.2em;
     border: none;
+    
 }
 
 #message {

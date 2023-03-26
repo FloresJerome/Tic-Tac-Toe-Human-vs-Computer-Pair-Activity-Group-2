@@ -3,6 +3,9 @@ let popupRef = document.querySelector(".popup");
 let newgameBtn = document.getElementById("new-game");
 let restartBtn = document.getElementById("restart");
 let msgRef = document.getElementById("message");
+let player1ScoreRef = document.getElementById("player1-score");
+let player2ScoreRef = document.getElementById("player2-score");
+
 //Winning Pattern Array
 let winningPattern = [
     [0, 1, 2],
@@ -14,9 +17,13 @@ let winningPattern = [
     [0, 4, 8],
     [2, 4, 6],
 ];
+
 //Player 'X' plays first
 let xTurn = true;
 let count = 0;
+let player1Score = 0;
+let player2Score = 0;
+
 
 //Disable All Buttons
 const disableButtons = () => {
@@ -40,25 +47,32 @@ const winFunction = (letter) => {
     disableButtons();
     if (letter == "X") {
         msgRef.innerHTML = "&#x1F389; <br> 'X' Wins";
+        player1Score++;
+        player1ScoreRef.innerText = player1Score;
     } else {
         msgRef.innerHTML = "&#x1F389; <br> 'O' Wins";
+        player2Score++;
+        player2ScoreRef.innerText = player2Score;
     }
 };
 
 //Function for draw
 const drawFunction = () => {
     disableButtons();
-    msgRef.innerHTML = "&#x1F60E; <br> It's a Draw";
+    msgRef.innerHTML = "&#128528 <br> It's a Draw";
 };
 
 //New Game
 newgameBtn.addEventListener("click", () => {
     count = 0;
     enableButtons();
+    xTurn = true; // Reset AI to start with X
 });
+
 restartBtn.addEventListener("click", () => {
     count = 0;
     enableButtons();
+    xTurn = true; // Reset AI to start with X
 });
 
 //Win Logic
@@ -81,13 +95,30 @@ const winChecker = () => {
     }
 };
 
+// Function for AI move
+const aiMove = () => {
+    // Select a random button that is not already clicked
+    const availableBtns = Array.from(btnRef).filter((btn) => !btn.innerText);
+    const selectedBtn = availableBtns[Math.floor(Math.random() * availableBtns.length)];
+    // Display O on selected button
+    selectedBtn.innerText = "O";
+    selectedBtn.disabled = true;
+    // Increment count and check for win/draw
+    count++;
+    winChecker();
+    if (count === 9) {
+        drawFunction();
+    }
+    // Switch turn to player
+    xTurn = true;
+};
+
 const playClickSound = () => {
     const sound = document.getElementById('click-sound');
     sound.currentTime = 0; // Reset the sound to the beginning
     sound.play();
 }
 
-//Display X/O on click
 btnRef.forEach((element) => {
     element.addEventListener("click", () => {
         if (xTurn) {
@@ -97,7 +128,7 @@ btnRef.forEach((element) => {
             element.disabled = true;
         } else {
             xTurn = true;
-            //Display Y
+            //Display O
             element.innerText = "O";
             element.disabled = true;
         }
@@ -110,6 +141,10 @@ btnRef.forEach((element) => {
         winChecker();
         // Play Click Sound
         playClickSound();
+        // Make AI move
+        if (!xTurn && count < 9) {
+            setTimeout(aiMove, 500);
+        }
     });
 });
 //Enable Buttons and disable popup on page load
